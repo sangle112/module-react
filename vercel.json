@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "https://instagram.f8team.dev/api/$1" },
+    {
+      "src": "/uploads/(.*)",
+      "dest": "https://instagram.f8team.dev/uploads/$1"
+    },
+    {
+      "src": "/socket.io/(.*)",
+      "dest": "https://instagram.f8team.dev/socket.io/$1"
+    },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
