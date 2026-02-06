@@ -1,3 +1,18 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://instagram.f8team.dev/api/:path*"
+    },
+    {
+      "source": "/uploads/:path*",
+      "destination": "https://instagram.f8team.dev/uploads/:path*"
+    },
+    {
+      "source": "/socket.io/:path*",
+      "destination": "https://instagram.f8team.dev/socket.io/:path*"
+    },
+
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }

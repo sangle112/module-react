@@ -1,4 +1,3 @@
-// src/shared/lib/socket.ts
 import { io, Socket } from "socket.io-client";
 import { env } from "@/app/config/env";
 import { storage } from "@/shared/lib/storage";
@@ -13,10 +12,10 @@ export function connectSocket(): Socket | null {
   const token = storage.getAccessToken();
   if (!token) return null;
 
-  if (socket?.connected) return socket;
+  if (socket && (socket.connected || socket.active)) return socket;
 
   socket = io(env.SOCKET_URL, {
-    transports: ["websocket"],
+    transports: ["websocket", "polling"],
     auth: { token },
     autoConnect: true,
   });
